@@ -12,6 +12,7 @@ function TodoApp() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="/index.html" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
