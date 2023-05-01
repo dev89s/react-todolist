@@ -4,42 +4,14 @@ import TodosList from "./TodosList";
 import { v4 as uuidv4 } from "uuid";
 
 function TodosLogic() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Setup development environment',
-      completed: true,
-    },
-    {
-      id: 2,
-      title: 'Develop website and add content',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Deploy to live server',
-      completed: false,
-    },
-    {
-      id: 4,
-      title: 'Buy groceries',
-      completed: false,
-    },
-    {
-      id: 5,
-      title: 'Daily exercise',
-      completed: true,
-    },
-    {
-      id: 6,
-      title: 'House cleaning',
-      completed: false,
-    },
-  ]);
+  const [todos, setTodos] = useState(getInitialTodos);
 
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+  function getInitialTodos() {
+    // getting stored items
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  }
 
   const handleChange = (id) => {
     setTodos((state) =>
@@ -73,6 +45,21 @@ function TodosLogic() {
     setTodos([...todos, newTodo]);
   }
 
+  const setUpdate = (updatedTitle, id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
+        }
+        return todo;
+      })
+    );
+  }
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <>
       <InputTodo addTodoItem={addTodoItem} />
@@ -80,6 +67,7 @@ function TodosLogic() {
         todosProps={todos}
         handleChange={handleChange}
         delTodo={delTodo}
+        setUpdate={setUpdate}
       />
     </>
   );

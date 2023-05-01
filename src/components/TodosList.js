@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-function TodosList({ todosProps, handleChange, delTodo }) {
+function TodosList({ todosProps, handleChange, delTodo, setUpdate }) {
   return (
     <ul>
       {todosProps.map((todo) => (
@@ -9,6 +9,7 @@ function TodosList({ todosProps, handleChange, delTodo }) {
           todo={todo}
           handleChange={handleChange}
           delTodo={delTodo}
+          setUpdate={setUpdate}
           />
       ))
       }
