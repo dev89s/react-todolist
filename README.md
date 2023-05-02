@@ -190,6 +190,6 @@ I would like to thank Microverse online web development school for providing the
 
 ## 📝 License <a id="license"></a>
 
-This project is [MIT](https://github.com/dev89s/math-magicians/blob/develop/LICENSE) licensed.
+This project is [MIT](https://github.com/dev89s/react-todolist/blob/develop/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
