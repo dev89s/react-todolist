@@ -1,11 +1,11 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
-import Home from "./routes/Home";
-import About from "./routes/About";
-import Login from "./routes/Login";
-import Profile from "./routes/Profile";
-import NotMatch from "./routes/NotMatch";
-import Layout from "./components/Layout";
+import Home from './routes/Home';
+import About from './routes/About';
+import Login from './routes/Login';
+import Profile from './routes/Profile';
+import NotMatch from './routes/NotMatch';
+import Layout from './components/Layout';
 
 function TodoApp() {
   return (

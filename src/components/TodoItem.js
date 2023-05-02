@@ -1,7 +1,11 @@
-import { useState } from "react";
-import styles from "../styles/TodoItem.module.css";
+import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
-function TodoItem({ todo, handleChange, delTodo, setUpdate }) {
+import styles from '../styles/TodoItem.module.css';
+
+function TodoItem({
+  todo, handleChange, delTodo, setUpdate,
+}) {
   const [editing, setEditing] = useState(false);
   const completeStyle = {
     fontStyle: 'italic',
@@ -14,8 +18,8 @@ function TodoItem({ todo, handleChange, delTodo, setUpdate }) {
     setEditing(true);
   };
 
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
@@ -35,9 +39,11 @@ function TodoItem({ todo, handleChange, delTodo, setUpdate }) {
             type="checkbox"
             checked={todo.completed}
             onChange={() => handleChange(todo.id)}
-          /> {' '}
-          <button onClick={handleEditing}>Edit</button>
-          <button onClick={() => delTodo(todo.id)}>Delete</button>
+          />
+          {' '}
+          {' '}
+          <button type="button" onClick={handleEditing}>Edit</button>
+          <button type="button" onClick={() => delTodo(todo.id)}>Delete</button>
           {' '}
           <span style={todo.completed ? completeStyle : null}>
             {todo.title}
@@ -50,10 +56,22 @@ function TodoItem({ todo, handleChange, delTodo, setUpdate }) {
           style={editMode}
           onChange={(e) => setUpdate(e.target.value, todo.id)}
           onKeyDown={handleUpdatedDone}
-        ></input>
+        />
       </li>
     </>
   );
 }
 
-export default TodoItem
+TodoItem.propTypes = {
+  todo: PropTypes.objectOf.isRequired = {
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  },
+  handleChange: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
+TodoItem.propTypes = { todo: PropTypes.isRequired };
+
+export default TodoItem;

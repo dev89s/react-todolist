@@ -1,4 +1,4 @@
-import styles from "../styles/Header.module.css";
+import styles from '../styles/Header.module.css';
 
 function Header() {
   const headerStyle = {
@@ -15,4 +15,4 @@ function Header() {
   );
 }
 
-export default Header
+export default Header;
